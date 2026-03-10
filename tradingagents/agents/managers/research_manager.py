@@ -35,7 +35,9 @@ Here are your past reflections on mistakes:
 
 Here is the debate:
 Debate History:
-{history}"""
+{history}
+
+**重要：请用中文撰写你的完整分析、投资建议和行动计划。专业术语可保留英文并在括号内标注中文，如 P/E Ratio（市盈率）。**"""
         response = llm.invoke(prompt)
 
         new_investment_debate_state = {

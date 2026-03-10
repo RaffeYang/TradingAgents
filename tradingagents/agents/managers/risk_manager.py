@@ -41,7 +41,9 @@ Deliverables:
 
 ---
 
-Focus on actionable insights and continuous improvement. Build on past lessons, critically evaluate all perspectives, and ensure each decision advances better outcomes."""
+Focus on actionable insights and continuous improvement. Build on past lessons, critically evaluate all perspectives, and ensure each decision advances better outcomes.
+
+**重要：请用中文撰写你的完整风险评估和交易建议。专业术语可保留英文并在括号内标注中文，如 P/E Ratio（市盈率）。最终交易提案标记保持英文格式：FINAL TRANSACTION PROPOSAL: **BUY/HOLD/SELL****"""
 
         response = llm.invoke(prompt)
 

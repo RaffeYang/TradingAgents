@@ -74,6 +74,11 @@ class TradingAgentsGraph:
         # Initialize LLMs with provider-specific thinking configuration
         llm_kwargs = self._get_provider_kwargs()
 
+        # Forward timeout / max_retries / api_key from config to LLM client
+        for _fwd_key in ("timeout", "max_retries", "api_key"):
+            if _fwd_key in self.config:
+                llm_kwargs[_fwd_key] = self.config[_fwd_key]
+
         # Add callbacks to kwargs if provided (passed to LLM constructor)
         if self.callbacks:
             llm_kwargs["callbacks"] = self.callbacks
@@ -118,7 +123,9 @@ class TradingAgentsGraph:
             self.conditional_logic,
         )
 
-        self.propagator = Propagator()
+        self.propagator = Propagator(
+            max_recur_limit=int(self.config.get("max_recur_limit", 100))
+        )
         self.reflector = Reflector(self.quick_thinking_llm)
         self.signal_processor = SignalProcessor(self.quick_thinking_llm)
 
